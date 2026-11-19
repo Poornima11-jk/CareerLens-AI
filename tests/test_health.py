@@ -15,3 +15,7 @@ def test_landing_page_loads():
     response = client.get("/")
     assert response.status_code == 200
     assert "CareerLens" in response.text
+def test_version_endpoint():
+    response = client.get("/version")
+    assert response.status_code == 200
+    assert response.json()["version"] == "0.1.0"
