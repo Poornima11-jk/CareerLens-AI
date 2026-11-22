@@ -18,3 +18,5 @@ uploads/
 # Editor / OS files
 .vscode/
 .DS_Store
+# Never commit resumes
+*.pdf

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Upload Resume — CareerLens AI</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="logo" href="/">CareerLens <strong>AI</strong></a>
+  </header>
+
+  <main class="hero">
+    <h1>Upload your resume</h1>
+    <p>
+      PDF only, maximum 5 MB. Your file is read in memory and
+      <strong>not saved</strong> yet.
+    </p>
+
+    <div class="card">
+      <label for="resume-file">Choose a PDF resume</label>
+      <input type="file" id="resume-file" accept="application/pdf,.pdf" />
+      <button id="upload-btn" class="btn" type="button">Extract text</button>
+      <p id="message" class="message" role="status"></p>
+    </div>
+
+    <div id="result" class="card" hidden>
+      <h2>Result</h2>
+      <p id="result-summary"></p>
+      <pre id="result-preview"></pre>
+    </div>
+  </main>
+
+  <script src="/static/upload.js"></script>
+</body>
+</html>
