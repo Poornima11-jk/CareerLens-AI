@@ -21,14 +21,25 @@
     <div class="card">
       <label for="resume-file">Choose a PDF resume</label>
       <input type="file" id="resume-file" accept="application/pdf,.pdf" />
-      <button id="upload-btn" class="btn" type="button">Extract text</button>
+      <button id="upload-btn" class="btn" type="button">Analyze resume</button>
       <p id="message" class="message" role="status"></p>
     </div>
 
     <div id="result" class="card" hidden>
-      <h2>Result</h2>
+      <h2>Skills detected</h2>
       <p id="result-summary"></p>
-      <pre id="result-preview"></pre>
+      <div id="detected-list"></div>
+
+      <details class="not-detected">
+        <summary id="not-detected-summary"></summary>
+        <div id="not-detected-list" class="chips"></div>
+      </details>
+
+      <p class="note">
+        Skills are found by matching words from a list I wrote by hand, so a skill
+        outside that list will not appear. Matching shows that a skill is
+        <strong>mentioned</strong>, not how well you know it.
+      </p>
     </div>
   </main>
 

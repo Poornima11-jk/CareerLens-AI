@@ -81,3 +81,20 @@ pre {
   word-break: break-word;
   font-size: 0.9rem;
 }
+.card h3 { font-size: 0.95rem; color: #4b5563; margin: 1rem 0 0.4rem; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+.chip {
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  border: 1px solid transparent;
+}
+.chip-found { background: #dcfce7; color: #166534; border-color: #86efac; }
+.chip-missing { background: #f3f4f6; color: #6b7280; border-color: #e5e7eb; }
+
+.not-detected { margin-top: 1.25rem; }
+.not-detected summary { cursor: pointer; font-weight: 600; margin-bottom: 0.6rem; }
+
+.note { margin-top: 1rem; font-size: 0.85rem; color: #6b7280; }
