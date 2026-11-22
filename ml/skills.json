@@ -15,7 +15,7 @@
     {"name": "TypeScript", "category": "Web", "aliases": []},
     {"name": "React", "category": "Web", "aliases": ["react.js", "reactjs"]},
     {"name": "Node.js", "category": "Web", "aliases": ["nodejs", "node js"]},
-    {"name": "REST API", "category": "Backend", "aliases": ["rest", "restful api", "rest apis", "restful apis"]},
+    {"name": "REST API", "category": "Backend", "aliases": ["restful api", "rest apis", "restful apis"]},
     {"name": "FastAPI", "category": "Backend", "aliases": []},
     {"name": "Flask", "category": "Backend", "aliases": []},
     {"name": "Django", "category": "Backend", "aliases": []},
@@ -72,7 +72,7 @@
     {"name": "Jupyter Notebook", "category": "Tools", "aliases": ["jupyter"]},
     {"name": "Streamlit", "category": "Tools", "aliases": []},
     {"name": "Postman", "category": "Tools", "aliases": []},
-    {"name": "Pytest", "category": "Tools", "aliases": ["unit testing"]},
+    {"name": "Pytest", "category": "Tools", "aliases": []},
     {"name": "Agile", "category": "Tools", "aliases": ["scrum"]}
   ]
 }
