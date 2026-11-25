@@ -98,3 +98,27 @@ pre {
 .not-detected summary { cursor: pointer; font-weight: 600; margin-bottom: 0.6rem; }
 
 .note { margin-top: 1rem; font-size: 0.85rem; color: #6b7280; }
+textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.6rem;
+  font: inherit;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  resize: vertical;
+}
+
+.none { color: #6b7280; font-size: 0.9rem; }
+
+.note-warning {
+  margin: 0.75rem 0;
+  padding: 0.6rem 0.8rem;
+  background: #fffbeb;
+  border-left: 4px solid #f59e0b;
+  border-radius: 4px;
+  color: #92400e;
+  font-size: 0.9rem;
+}
+
+.card ul { margin-left: 1.25rem; }
