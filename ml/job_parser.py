@@ -1,5 +1,5 @@
 from ml.preprocessing import clean_text
-
+from ml.skill_extraction import extract_skills
 HEADING_PHRASES = {
     "required": [
         "requirements", "requirement", "required", "required skills",
@@ -62,3 +62,31 @@ def split_job_sections(text: str) -> dict:
     result = {name: "\n".join(lines) for name, lines in buckets.items()}
     result["has_requirement_sections"] = found_requirement_heading
     return result
+def _names(text: str) -> list:
+    return [skill["name"] for skill in extract_skills(text)["detected"]]
+
+
+def analyze_job(text: str) -> dict:
+    sections = split_job_sections(text)
+
+    if sections["has_requirement_sections"]:
+        required = _names(sections["required"])
+        preferred = [n for n in _names(sections["preferred"]) if n not in required]
+        mentioned = []
+    else:
+        required = []
+        preferred = []
+        mentioned = _names(text)
+
+    in_responsibilities = [
+        n for n in _names(sections["responsibilities"])
+        if n not in required and n not in preferred
+    ]
+
+    return {
+        "has_requirement_sections": sections["has_requirement_sections"],
+        "required": required,
+        "preferred": preferred,
+        "in_responsibilities": in_responsibilities,
+        "mentioned": mentioned,
+    }
