@@ -28,3 +28,47 @@ def match_skills(resume_skills: list, job_skills: dict) -> dict:
         "responsibilities": {"matched": matched_resp, "missing": missing_resp},
         "extra_skills": extra_skills,
     }
+REQUIRED_WEIGHT = 0.8
+PREFERRED_WEIGHT = 0.2
+
+
+def _ratio(group: dict):
+    total = len(group["matched"]) + len(group["missing"])
+    if total == 0:
+        return None
+    return len(group["matched"]) / total
+
+
+def _percent(value):
+    return None if value is None else round(value * 100)
+
+
+def calculate_score(match: dict) -> dict:
+    required = _ratio(match["required"])
+    preferred = _ratio(match["preferred"])
+    mentioned = _ratio(match["mentioned"])
+
+    if required is not None and preferred is not None:
+        overall = REQUIRED_WEIGHT * required + PREFERRED_WEIGHT * preferred
+        method = "80% required + 20% preferred"
+    elif required is not None:
+        overall = required
+        method = "required skills only (no preferred skills found)"
+    elif preferred is not None:
+        overall = preferred
+        method = "preferred skills only (no required skills found)"
+    elif mentioned is not None:
+        overall = mentioned
+        method = "all mentioned skills (job had no headings, so required and preferred are unknown)"
+    else:
+        overall = None
+        method = "no score: no recognised skills in the job description"
+
+    return {
+        "overall": _percent(overall),
+        "required_match": _percent(required),
+        "preferred_match": _percent(preferred),
+        "mentioned_match": _percent(mentioned),
+        "method": method,
+        "weights": {"required": REQUIRED_WEIGHT, "preferred": PREFERRED_WEIGHT},
+    }
