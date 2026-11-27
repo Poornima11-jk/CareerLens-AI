@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
+from app.routes.analyze import router as analyze_router
 from app.routes.job import router as job_router
 from app.routes.resume import router as resume_router
 
@@ -18,6 +19,7 @@ app = FastAPI(
 
 app.include_router(resume_router)
 app.include_router(job_router)
+app.include_router(analyze_router)
 
 app.mount("/static", StaticFiles(directory=FRONTEND_DIR / "static"), name="static")
 
@@ -35,6 +37,11 @@ def upload_page():
 @app.get("/job", include_in_schema=False)
 def job_page():
     return FileResponse(FRONTEND_DIR / "job.html")
+
+
+@app.get("/analyze", include_in_schema=False)
+def analyze_page():
+    return FileResponse(FRONTEND_DIR / "analyze.html")
 
 
 @app.get("/health")

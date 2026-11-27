@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Full Analysis — CareerLens AI</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="logo" href="/">CareerLens <strong>AI</strong></a>
+  </header>
+
+  <main class="hero">
+    <h1>Full analysis</h1>
+    <p>Upload your resume and paste a genuine job description. Both are analysed in memory and <strong>not saved</strong> yet.</p>
+
+    <div class="card">
+      <label for="resume-file">Resume (PDF, max 5 MB)</label>
+      <input type="file" id="resume-file" accept="application/pdf,.pdf" />
+      <label for="job-text">Job description</label>
+      <textarea id="job-text" rows="10" maxlength="20000"
+        placeholder="Paste the full job description here..."></textarea>
+      <button id="analyze-btn" class="btn" type="button">Analyze</button>
+      <p id="message" class="message" role="status"></p>
+    </div>
+
+    <div id="result" class="card" hidden>
+      <h2>Career Match Score</h2>
+      <p id="score-value" class="score"></p>
+      <p id="score-method"></p>
+      <ul id="score-parts"></ul>
+
+      <h3>Strengths (skills the job asks for that your resume shows)</h3>
+      <div id="strengths" class="chips"></div>
+      <h3>High priority gaps (listed as required)</h3>
+      <div id="gap-high" class="chips"></div>
+      <h3>Medium priority gaps (listed as preferred)</h3>
+      <div id="gap-medium" class="chips"></div>
+      <h3>Low priority (only in responsibilities)</h3>
+      <div id="gap-low" class="chips"></div>
+      <h3>Unranked (job had no headings)</h3>
+      <div id="gap-unranked" class="chips"></div>
+
+      <h3>Experience requirement</h3>
+      <ul id="experience-list"></ul>
+      <h3>Education requirement</h3>
+      <p id="education-text"></p>
+
+      <p class="note">
+        The score uses skills only. Experience and education are shown but not
+        scored. Priority comes from how the job text labels each skill, not from
+        market data. Skills come from a hand-written list, and matching shows a
+        skill is mentioned, not how well you know it. Related skills (for example
+        MySQL and SQL) get no partial credit.
+      </p>
+    </div>
+  </main>
+
+  <script src="/static/analyze.js"></script>
+</body>
+</html>
