@@ -72,3 +72,28 @@ def calculate_score(match: dict) -> dict:
         "method": method,
         "weights": {"required": REQUIRED_WEIGHT, "preferred": PREFERRED_WEIGHT},
     }
+def build_gaps(match: dict) -> dict:
+    high = list(match["required"]["missing"])
+    medium = [n for n in match["preferred"]["missing"] if n not in high]
+    unranked = [
+        n for n in match["mentioned"]["missing"]
+        if n not in high and n not in medium
+    ]
+    low = [
+        n for n in match["responsibilities"]["missing"]
+        if n not in high and n not in medium and n not in unranked
+    ]
+
+    strengths = []
+    for group in ("required", "preferred", "mentioned", "responsibilities"):
+        for name in match[group]["matched"]:
+            if name not in strengths:
+                strengths.append(name)
+
+    return {
+        "high": high,
+        "medium": medium,
+        "low": low,
+        "unranked": unranked,
+        "strengths": strengths,
+    }
