@@ -4,3 +4,4 @@ pytest
 httpx
 pypdf
 python-multipart
+scikit-learn
